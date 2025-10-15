@@ -1,25 +1,20 @@
-import java.util.Scanner;
-public class Prime {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Enter start and end range");
-		Scanner scanner=new Scanner(System.in);
-		int srange= scanner.nextInt(); //starting range
-		int erange=scanner.nextInt(); //ending range
-		for(int i=srange;i<=erange;i++) {
-			if(i<2) continue;
-			int j;
-			for(j=2;j<=i/2;j++) {
-				if(i%j==0){
-					break;
-					}
-				
-				}
-			if(j>i/2) {
-				System.out.println(i);
-			}
-		}
-	}
-
+class Prime{
+    public static void main(String[] args){
+        int n=Integer.parseInt(args[0]);
+        int[] numbers=new int[n];
+        for(int i=0;i<n;i++){
+            numbers[i]=Integer.parseInt(args[i+1]);
+        }
+        for(int i=0;i<n;i++){
+            boolean x=checkPrime(numbers[i]);
+            System.out.println(x);
+        }
+    }
+    private static boolean checkPrime(int num){
+        if(num<2)return false;
+        for(int i=2;i<=Math.sqrt(num);i++){
+            if(num%i==0)return false;
+        }
+        return true;
+    }
 }
